@@ -655,7 +655,7 @@
     height: 2px;
     left: 50%;
     position: absolute;
-    background: #009336; /* màu xanh chuối */
+    background: #009336; /* màu xanhv chuối */
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
 }
