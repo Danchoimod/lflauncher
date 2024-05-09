@@ -28,7 +28,7 @@ function showProduct() {
 
 
 /* Show subnav */
-
+/* nothing */
 /* Main */
 function mouseOverMain() {
   document.querySelector(".header__navbar-main").classList.add("header__navbar-item-subnav-show");
