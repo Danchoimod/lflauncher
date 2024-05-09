@@ -1002,7 +1002,7 @@
     background-color: white;
 }
 .header-mobile-tablet__logo-img {
-    height: 24px;
+    height: 24px;   
 }
 .container_nope{
     background-color: #202020;
@@ -1616,7 +1616,7 @@ h4 {
 
 .scroll__change-color-tablet {
     box-shadow: -2px 2px 45px -20px rgba(0, 0 ,0, 0.3);
-    background-color: rgba(255, 255, 255, 1);
+    background-color: #181818;
 }
 
 .scroll__show-product {

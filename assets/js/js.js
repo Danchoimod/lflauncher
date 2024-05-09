@@ -9,7 +9,7 @@ function showProduct() {
     document.querySelector(".header-mobile-tablet").classList.add("scroll__change-color-tablet");
   } else {
     // document.getElementById("header__navbar-scroll").classList.remove("scroll__change-color");
-    document.querySelector(".header-mobile-tablet").classList.remove("scroll__change-color-tablet");
+     document.querySelector(".header-mobile-tablet").classList.remove("scroll__change-color-tablet");
   }
 
   if (document.body.scrollTop > 590 || document.documentElement.scrollTop > 590) {
@@ -140,16 +140,7 @@ $(document).ready(function(){
 
   /* BackTop */
 
-  $(window).scroll(function() {
-    if ($(this).scrollTop()) {
-      $('#backtop').fadeIn();
-    } else {
-      $('#backtop').fadeOut();
-    }
-  });
-  $('#backtop').click(function() {
-    $('html, body').animate({scrollTop: 0}, 800);
-  });
+
 
 });
 
