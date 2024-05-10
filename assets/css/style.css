@@ -5,7 +5,7 @@
 .green-btn {
     background-color: #009336; /* Màu xanh lá */
     border: none;
-    color: white;
+    color: white; /* text cho fre */
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -205,7 +205,7 @@
     top: 0;
     right: 0;
     left: 0;
-    background-color: #fff;
+    background-color: #fff;/*  dell rõ */
     transform: translateY(-100%);
     opacity: 0;
     transition: all linear 0.3s;
@@ -286,7 +286,7 @@
 }
 
 .header__menu-sreach-category-select option {
-
+    background-color: #000000; /* thanh sệch */
 }
 
 /* Menu mobile and tablet */
@@ -294,7 +294,7 @@
 .menu__mobile--tablet {
     position: fixed;
     z-index: 4;
-    background-color: #fff; /* thanh sệch */
+    background-color: #181818; /* thanh sệch */
     top: 0;
     bottom: 0;
     left: 0;
@@ -441,14 +441,14 @@
     bottom: 0;
     width: 460px;
     max-width: 100%;
-    background-color: #fff;
+    background-color: #fff;/*  dell bt */
     transform: translateX(100%);
     opacity: 0;
     transition: all linear 0.3s;
 }
 
 .nav__bang-header {
-    background-color: #fafafa;
+    background-color: #fafafa; /*  dell bt */
     height: 70px;
     padding: 0 50px;
     display: flex;
@@ -469,7 +469,7 @@
 .nav__bang-header-icon {
     font-size: 1.7rem;
     color: #333;
-    background-color: #fff;
+    background-color: #fff; /*  dell bt */
     padding: 8px;
     border-radius: 50%;
 }
@@ -496,7 +496,7 @@
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgb(226, 226, 226);
+    border-bottom: 1px solid rgb(226, 226, 226); /*  dell bt */
 }
 
 .nav__bag-list-item-left {
@@ -675,7 +675,7 @@
     left: 0;
     right: 0;
     background-color: #171717; /* màu của thanh bar pc */
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #000000;
     box-shadow: 0 5px 5px rgba(255, 255, 255, 0.3);
     padding: 22px 64px;
     display: none;
@@ -754,7 +754,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #FFF;
+    background-color: #FFF; /*  thanh bên cho pc */
     transform: translateX(-100%);
     animation: fadeIn linear 0.2s;
     transition: transform linear 0.2s;
@@ -765,7 +765,7 @@
     display: inline-block;
     margin: 40px 0;
     background-color: #f2f2f2;
-    border: 9px solid #f2f2f2;
+    border: 9px solid #f2f2f2; /* nút thoát */
     border-radius: 50%;
 }
 
@@ -787,7 +787,7 @@
 }
 
 .header__menu--list-item:hover .header__menu--list-icon {
-    background-color: rgba(242, 242, 242,1);
+    background-color: rgba(242, 242, 242,1); /*  thanh bên đổi màu */
     border: 9px solid #f2f2f2;
     border-radius: 50%;
 }
@@ -799,7 +799,7 @@
 .header__menu--list-item-link {
     font-size: 1.8rem;
     position: relative;
-    color: #555;
+    color: #555; /*  text của thanh bên pc */
     text-decoration: none;
     letter-spacing: 0.15em;
     align-items: center;
@@ -808,7 +808,7 @@
 .header__menu--list-icon {
     font-size: 1.4rem;
     margin-left: auto;
-    background-color: rgba(242, 242, 242,0);
+    background-color: rgba(255, 0, 0, 0); /* núm tròn thanh bên */
     border: 9px solid rgba(242, 242, 242,0);
     border-radius: 50%;
     transition: all linear 0.2s;
@@ -821,14 +821,14 @@
     padding: 0;
     font-size: 1.6rem;
     font-weight: 400;
-    color: #555;
+    color: #555; /*  vẫn là text thanh bên */
     letter-spacing: 2px;
 }
 
 .grid__column-menu-right-link {
     margin: 4px 0;
     font-size: 1.5rem;
-    color: #555;
+    color: #555; /*  vẫn là text thanh bên */
     text-decoration: none;
     letter-spacing: 0.05em;
     display: inline-block;
@@ -844,7 +844,7 @@
     height: 2px;
     left: 0%;
     position: absolute;
-    background: #555;
+    background:  #009336; /*  xanh thanh bên */
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
 }
@@ -896,7 +896,7 @@
 
 .header__container-ads-sale {
     background-color: #000;
-    color: #fff;
+    color: #fff; /*  đell bt*/
     font-weight: 500;
     border-radius: 5px;
     padding: 3px 10px;
@@ -910,7 +910,12 @@
     line-height: 70px;
     font-weight: 400;
 }
-
+.indam{
+    color: #000000;
+    font-size: 1.9rem;
+    font-weight: bold;
+    text-align: center;
+}
 .header__container-ads-shop-now {
     font-size: 1.9rem;
     color: #888;
@@ -1024,25 +1029,26 @@
     font-size: 3rem;
     padding-bottom: 36px;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 30px;
     margin: 0;
+    
 }
 
 .app__container-introduce {
     text-align: center;
     font-size: 1.5rem;
-    max-width: 640px;
+    max-width: 700px;
     padding-bottom: 36px;
     font-weight: 400;
     margin: 0 auto;
-    line-height: 26px;
-    color: #9c9c9c;
+    line-height: 26px; /* khoảng cách giữa các dòng */
+    color: #9c9c9c; /* văn bản của thằng ảnh */
 }
 
 /* App Container Product */
 
 .app__container-product {
-    border-bottom: 1px solid rgb(226, 226, 226);
+    border-bottom: 1px solid #202020;
     padding: 50px 0;
 }
 
@@ -1129,7 +1135,11 @@
 }
 
 /* App Container Selling */
-
+.mauxam {
+    background-color: #202020;
+     padding: 10px 0;
+     text-align: center;
+}
 .app__container-selling {
     padding: 60px 0;
 }
@@ -1265,7 +1275,7 @@
     position: absolute;
     display: block;
     background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
+    color: #ffffff;
     min-width: 90px;
     font-size: 1.2rem;
     padding: 5px 0;
@@ -1350,8 +1360,9 @@
 
 .container__visit,
 .container__trending {
-    padding: 60px 0;
-    border-bottom: 1px solid rgb(0, 0, 0);
+    padding: 0px 0;
+    border-bottom: 1px solid rgb(0, 0, 0); /* đường kẻ */
+    opacity: 0.7;
 }
 
 .container__trending-item {
@@ -1452,8 +1463,9 @@
 
 .footer__info {
     padding: 30px 0;
-    border-bottom: 1px solid rgb(226, 226, 226) ;
+    border-bottom: 1px solid rgb(255, 255, 255) ;
     background-color: #000000;
+    
 }
 
 .footer__info-title {
