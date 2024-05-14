@@ -229,6 +229,10 @@
     text-decoration: none;
     margin-right: 30px;
 }
+.header__menu-sreach-close-link.active {
+    text-decoration: none;
+    margin-right: 30px;
+}
 
 .nav__bang-sreach-close-icon {
     font-size: 1.6rem;
@@ -1042,6 +1046,10 @@
     padding-bottom: 36px;
     font-weight: 400;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     line-height: 26px; /* khoảng cách giữa các dòng */
     color: #9c9c9c; /* văn bản của thằng ảnh */
 }
@@ -1501,6 +1509,7 @@
     list-style: none;
     justify-content: flex-start;
     padding: 10px 0;
+    align-items: center;
 }
 
 .footer__info--list-icon-item {
