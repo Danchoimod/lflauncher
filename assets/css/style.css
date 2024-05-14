@@ -315,6 +315,9 @@
     display: flex;
     align-items: center;
 }
+.mobile--tablet__close-icon {
+    color: white;
+}
 
 .mobile--tablet__link-close {
     text-decoration: none;
@@ -324,9 +327,7 @@
 
 .mobile--tablet__close-icon {
     font-size: 1.6rem;
-    background-color: rgb(231, 229, 229, 0.7);
-    border-radius: 50%;
-    border: 10px solid rgb(231, 229, 229, 0.7);
+    
 }
 
 
