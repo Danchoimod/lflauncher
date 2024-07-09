@@ -2,11 +2,852 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT's not yet</title>
+    <title>LF Launcher</title>
+
+    <link rel="icon" href="https://cdn.icon-icons.com/icons2/56/PNG/512/metro_minecraft_11396.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Slide -->
+    <link rel="stylesheet" href="./assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/owl.carousel.min.js"></script>
+    <script src="./assets/js/js.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="./assets/font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <div class="app">
+        <div class="header">
 
-    <a href="index.html">Quay lại Trang Chủ</a>
+            <input type="checkbox" id="header__menu-input" class="nav-input">
+            <input type="checkbox" id="header__menu-bag" class="cart-input">
+            <input type="checkbox" id="header__menu-search" class="search-input">
+            <input type="checkbox" id="menu__mobile--tablet-check" class="menu__mobile--tablet-input">
+
+
+
+            <div class="header__menu-sreach">
+                <div class="header__menu-sreach-close">
+                    <label for="header__menu-search" href="#" class="header__menu-sreach-close-link">
+                        <i class="nav__bang-sreach-close-icon ti-close"></i>
+                    </label>
+                </div>
+
+                <div class="header__menu-sreach-nav">
+                    <div class="header__menu-sreach-bar-all">
+                        <div class="header__menu-sreach-bar">
+                            <i class="header__menu-sreach-icon ti-search"></i>
+                            <input type="text" class="header__menu-sreach-input" placeholder="Search product...">
+                        </div>
+                        <div class="header__menu-sreach-category">
+                            <select class="header__menu-sreach-category-select" >
+                                <option value="0">All Categories</option>
+                                <option value="1">Men</option>
+                                <option value="2">Speakers</option>
+                                <option value="3">Women</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="menu__mobile--tablet l-0">
+                <div class="menu__mobile--tablet-header">
+                    <label for="menu__mobile--tablet-check" href="#" class="mobile--tablet__link-close">
+                        <i class="mobile--tablet__close-icon ti-close"></i>
+                    </label>
+                </div>
+                <div class="menu__mobile--tablet-body">
+
+                    <div class="menu__mobile--tablet-body-top">
+
+    
+                        <div class="menu__mobile--tablet-nav">
+                            <a href="index.html" class="menu__mobile--tablet-content">HOME</a>
+                            <i class="menu__mobile--tablet-main-icon ti-angle-right"></i>
+                        </div>
+                        <div class="menu__mobile--tablet-nav">
+                            <a href="shop.html" class="menu__mobile--tablet-content">SHOP</a>
+                            <i class="menu__mobile--tablet-main-icon ti-angle-right"></i>
+                        </div>
+                        <div class="menu__mobile--tablet-nav">
+                            <label for="menu__mobile--tablet-check">
+                                <a id="backdown" class="menu__mobile--tablet-content">COMMUNITY</a>
+                            </label>                            
+                        </div>
+                        <div class="menu__mobile--tablet-nav">
+                            <a href="support.html" class="menu__mobile--tablet-content">SUPPORT</a>
+                            <i class="menu__mobile--tablet-main-icon ti-angle-right"></i>
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+
+
+
+            <div id="header__navbar-scroll" class="header__navbar hide-on-mobile-tablet">
+                <div class="header__navbar-left">
+                    <ul class="header__navbar-list">
+
+    
+                        <li  onmouseover="mouseOverMain()" onmouseout="mouseOutMain()" class="header__navbar-item">
+                            <a href="" class="header__navbar-item-link header__navbar-item-link-underline">
+                                Game
+                            </a>
+                        </li>
+
+                        <li onmouseover="mouseOverShop()" onmouseout="mouseOutShop()"  class="header__navbar-item">
+                            <a href="" class="header__navbar-item-link header__navbar-item-link-underline">
+                                Shop
+                            </a>
+                        </li>
+
+                        <li onmouseover="mouseOverProduct()" onmouseout="mouseOutProduct()" class="header__navbar-item">
+                            <a href="" class="header__navbar-item-link header__navbar-item-link-underline">
+                                Community
+                            </a>
+                        </li>
+
+                        <li onmouseover="mouseOverPages()" onmouseout="mouseOutPages()" class="header__navbar-item">
+                            <a href="" class="header__navbar-item-link header__navbar-item-link-underline">
+                                Support   
+                            </a>
+                        </li>
+
+                        
+
+                    </ul>
+                </div>
+                
+                <div class="header__navbar-center">
+                    <img src="./assets/img/title.png" class="header__navbar-brand-logo" alt="">
+                </div>
+                
+                <div class="header__navbar-right">
+                    <ul class="header__navbar-list">
+
+                        <li class="header__navbar-item">
+                            <a href="" class="header__navbar-item-link header__navbar-item-link-underline">
+                                My Account
+                            </a>
+                        </li>
+
+                        <li class="header__navbar-item">
+                            <label for="header__menu-search" href="#" class="header__navbar-item-link">
+                                <i class="header__navbar-icon ti-search"></i>
+                            </label>
+                        </li>
+    
+                      
+                        
+                    </ul>
+                </div>
+
+                <!-- Sub nav -->
+
+                <!-- Main Subnav -->
+                <div onmouseover="mouseOverMain()" onmouseout="mouseOutMain()" class="header__navbar-item-subnav header__navbar-main">
+                    <div class="grid__row-header">
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h6 class="subnav-category">GAME</h6>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            Minecraft 2D MOD2090
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="javascript:history.back()" class="subnav-category-item-link">
+                                            LFLAUNCHER
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link ">
+                                            POJAVLAUNCHER
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">DEVICES</h3>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                          ANDROID  
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link ">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                           
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">TUTORIAL</h3>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li> 
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">OTHER DEMOS</h3>
+                                
+                                <img class="subnav-category-img" src="./assets/img/anh.webp" alt="">
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            Beta test
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Main Subnav -->
+
+                <!-- Shop Subnav -->
+                <div onmouseover="mouseOverShop()" onmouseout="mouseOutShop()" class="header__navbar-item-subnav header__navbar-shop">
+                    <div class="grid__row-header">
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">SHOPEE VN</h3>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            LastFom Store
+                                        </a>
+                                    </li>
+
+                                   
+                                </ul>
+
+                                
+                            </div>
+                        </div>
+
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">SHIRT</h3>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            LF black shirt
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            LF black coal
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link ">
+                                           LF hat
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                              
+                            </div>
+                        </div>
+
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">TIKTOK</h3>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            LastFom Studio
+                                        </a>    
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Shop Subnav -->
+
+                <!-- Product Subnav -->
+                <div onmouseover="mouseOverProduct()" onmouseout="mouseOutProduct()" class="header__navbar-item-subnav header__navbar-product">
+                    <div class="grid__row-header">
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">DISCORD SERVER</h3>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            LF Launcher v2
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link ">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">FACEBOOK PAGE</h3>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            Mod2090
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             LastFom Studio 
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link ">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">YOUTUBE</h3>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            LastFom Studio 
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                           
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                             
+                                        </a>
+                                    </li> 
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <!-- End Product Subnav -->
+
+                <!-- Pages Subnav -->
+                <div onmouseover="mouseOverPages()" onmouseout="mouseOutPages()" class="header__navbar-item-subnav header__navbar-pages">
+                    <div class="grid__row-header">
+                        <div class="grid__column-5">
+                            <div class="header__subnav-home">
+                                <h3 class="subnav-category">ABOUT</h3>
+                                <ul class="subnav-category-list">
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            About Us
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link">
+                                            Store Locations
+                                        </a>
+                                    </li>
+
+                                    <li class="subnav-category-item">
+                                        <a href="" class="subnav-category-item-link ">
+                                            FAQ’s
+                                        </a>
+                                    </li>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- End Pages Subnav -->
+
+                <!-- Journal Subnav -->
+
+                <!-- End Journal Subnav -->
+            </div>
+
+            <!-- NavBar Tablet and Mobile -->
+            <div class="header-mobile-tablet">
+                <label for="menu__mobile--tablet-check" href="#" class="header-mobile-tablet__icon-link">
+                    <i class="ti-menu"></i>
+                </label>
+                <a href="#" class="header-mobile-tablet__icon-link">
+                    <img src="./assets/img/title.png" alt="" class="header-mobile-tablet__logo-img">
+                </a>
+                <a for="header__menu-bag" href="https://www.facebook.com/profile.php?id=100094655031262" class="header-mobile-tablet__icon-link" target="_blank">
+                    <i class="ti-bag"></i>
+  
+                    <!-- cái catalog -->
+                </a>
+            </div>
+
+
+            <div class="header__menu-overlay hide-on-mobile-tablet">
+                <div class="grid wide">
+                    <label for="header__menu-input" class="header__menu--close-link">
+                        <i class="header__menu--close-icon ti-close"></i>
+                    </label>
+                    <div class="row">
+                        <div class="grid__column-menu-left">
+                            <ul class="header__menu--list">
+                                <li class="header__menu--list-item">
+                                    <div class="header__menu--list-block">
+                                        <a href="" class="header__menu--list-item-link">
+                                            MAIN
+                                        </a>
+                                        <i class="header__menu--list-icon ti-angle-right"></i>
+                                    </div>
+                                </li>
+                                <li class="header__menu--list-item">
+                                    <div class="header__menu--list-block">
+                                        <a href="" class="header__menu--list-item-link">
+                                            SHOP
+                                        </a>
+                                        <i class="header__menu--list-icon ti-angle-right"></i>
+                                    </div>
+                                </li>
+                                <li class="header__menu--list-item">
+                                    <div class="header__menu--list-block">
+                                        <a href="" class="header__menu--list-item-link">
+                                            PRODUCT
+                                        </a>
+                                        <i class="header__menu--list-icon ti-angle-right"></i>
+                                    </div>
+                                </li>
+                                <li class="header__menu--list-item">
+                                    <div class="header__menu--list-block">
+                                        <a href="" class="header__menu--list-item-link">
+                                            PAGES
+                                        </a>
+                                        <i class="header__menu--list-icon ti-angle-right"></i>
+                                    </div>
+                                </li>
+                                <li class="header__menu--list-item">
+                                    <div class="header__menu--list-block">
+                                        <a href="" class="header__menu--list-item-link">
+                                            JOURNAL
+                                        </a>
+                                        <i class="header__menu--list-icon ti-angle-right"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="grid__column-menu-right">
+                            <h3 class="grid__column-menu-right-category">CATALOG</h3>
+                            <ul class="grid__column-menu-right-list">
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Style 1
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Style 2
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Style 3
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Style 4
+                                    </a>
+                                </li>
+                            </ul>
+                            <h3 class="grid__column-menu-right-category">FILTERS</h3>
+
+                            <ul class="grid__column-menu-right-list">
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Top
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Sidebar
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Slide Out
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="grid__column-menu-right" >
+                            <h3 class="grid__column-menu-right-category">CATALOG OPTIONS</h3>
+                            <ul class="grid__column-menu-right-list">
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Darker Background
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Width – Regular
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Animation – Zoom Only
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Load More – Scroll
+                                    </a>
+                                </li>
+                            </ul>
+                            <h3 class="grid__column-menu-right-category">SHOP PAGES</h3>
+
+                            <ul class="grid__column-menu-right-list">
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        My account – 1 Col
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Wishlist
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="grid__column-menu-right">
+                            <h3 class="grid__column-menu-right-category">CART</h3>
+                            <ul class="grid__column-menu-right-list">
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Shopping Cart
+                                    </a>
+                                </li>
+                            </ul>
+                            <h3 class="grid__column-menu-right-category">MINICART</h3>
+
+                            <ul class="grid__column-menu-right-list">
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Top
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Side
+                                    </a>
+                                </li>
+                                <li class="grid__column-menu-right-item">
+                                    <a href="" class="grid__column-menu-right-link">
+                                        Dark
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+        </div>
+       
+       <div class="app__container" style="background-color: #202020;">
+    <div class="app__container-product">
+        <div class="grid wide" style="background-image: url('https://cdn-www.bluestacks.com/bs-images/featured_net.kdt.pojavlaunch.jpg');">
+            <div class="row ">  
+                <div class="col l-4 m-12 c-12">
+                    <div class="product-item__wrap">
+                        <div class="container__product-item" style="display: flex; flex-direction: column; align-items: center;">
+                            <h2 class="container__product-title-content">Download<br> Pojavlauncher <br> For your phone</h2>
+                            <a href="https://play.google.com/store/apps/details?id=net.kdt.pojavlaunch&hl=en&pli=1" class="container__product-content-button" target="_blank" style="background-color: #009336; color: #ffffff;">Download </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+       
+
+            <!-- Slide testimoonials -->
+
+            
+
+            
+           
+            </div>
+
+            <div class="mauxam">
+                <div class="grid wide">
+                    <h4 class="app__container-title">
+                    POJAVLAUNCHER(FIX LAG MOD)
+                    </h4>
+                    <p class="app__container-introduce">
+                        This application is intended to run one particular LWJGL-based game you all know.
+Minimum requirements: Android™ 5.0; 1GB RAM (only 1.12.2 or less)
+Recommended requirements: Android™ 8.1; 4GB RAM (most of the versions)
+Note: has problems with some phones.
+Source: https://github.com/PojavLauncherTeam/PojavLauncher
+                    </p>
+                    <p class="app__container-introduce">
+                       
+                        <button class="green-btn" onclick="chuyenTranglist()">download</button>
+                    </p>
+                    <img src="https://www.9minecraft.net/wp-content/uploads/2018/03/Less-Lag-Mod.jpg" alt="" class="container__visit-img">
+                    
+                </div>
+            </div>
+            <div class="container_nope">
+                <div class="container__visit">
+                    <div class="grid wide">                    
+                    <h4 class="app__container-title">
+                        Frequently Asked Questions About Downloading Minecraft
+                    </h4>
+                    <h1 class="app__container-introduce">
+                        
+                        <div class="split-text">
+                            <div class="left">The Minecraft Launcher is your hub for accessing all of your favorite Minecraft games on PC. You can download new versions of Minecraft games, access multiplayer servers, manage your profile, get mod support, and more with Minecraft Launcher. Learn more about Minecraft Launcher through the help center.   </div>
+                            <div class="right">You can install Minecraft Launcher through the Microsoft Store or select the “Download Launcher” button at the top of this page. If you need to reinstall Launcher, simply go to the Microsoft Store and download it again. If you have the old version of Minecraft Launcher, use our guide on how to uninstall the old Minecraft Unified Launcher so you can get the newest version.</div>
+                          </div>
+                    </p></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer__info">
+                <div class="grid wide">
+                    <div class="row">
+
+
+
+                        <div class="app__container-introduce">
+                            <h6 class="white-text">FOLLOW LASTFOM STUDIO</h6>
+                           <h6>ThANKS YOU FOR PLAYING</h6>
+                            <ul class="footer__info--list-icon">
+                                <li class="footer__info--list-icon-item">
+                                    <a href="https://www.facebook.com/profile.php?id=100094655031262" class="footer__info-link-icon" target="_blank">
+                                        <i class="footer__info-icon ti-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="footer__info--list-icon-item">
+                                    <a href="https://www.youtube.com/channel/UCH2lrr90xhH_k_Q-QUyNpfA" class="footer__info-link-icon" target="_blank">
+                                        <i class='fa fa-youtube-play' style='font-size:15px;color:rgb(255, 255, 255)'></i>
+                                    </a>
+                                </li>
+                                <li class="footer__info--list-icon-item">
+                                    <a href="https://discord.gg/3pGfja3ceW" class="footer__info-link-icon" class="footer__info-link-icon" target="_blank">
+                                        <i class='fab fa-discord' style='font-size:15px;color:rgb(255, 255, 255)'></i>
+                                    </a>
+                                </li>
+                                <li class="footer__info--list-icon-item">
+                                    <a href="" class="footer__info-link-icon">
+                                        <i class="footer__info-icon ti-pinterest-alt"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    
+                </div>
+            </div>
+
+
+            </div>
+        </div>
+        
+        <div id="backtop">
+            <i class="backtop__icon ti-arrow-up"></i>
+        </div>
+    </div> 
 </body>
 </html>

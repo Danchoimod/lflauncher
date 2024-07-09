@@ -76,6 +76,9 @@ function mouseOutJournal() {
 function chuyenTrang() {
   window.location.href = "about.html";
 }
+function chuyenTranglist() {
+  window.location.href = "about.html";
+}
 /* Jquery*/
 $(document).ready(function(){
   $('.sajid-1').owlCarousel({
