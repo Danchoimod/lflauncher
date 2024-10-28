@@ -77,7 +77,7 @@ function chuyenTrang() {
   window.location.href = "about.html";
 }
 function chuyenTranglist() {
-  window.location.href = "about.html";
+  window.location.href = "download.html";
 }
 /* Jquery*/
 $(document).ready(function(){
