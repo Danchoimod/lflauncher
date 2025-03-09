@@ -1677,3 +1677,22 @@ h4 {
 .backtop__icon {
     font-size: 2rem;
 }
+
+h1, h2 {
+    color: #333;
+}
+
+clu {
+    list-style: none;
+    padding: 0;
+    display: block;
+}
+
+clu cli {
+    display: block;  /* Bắt buộc để xuống dòng */
+    background: #ffffff;
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 1.6rem;
+    border-left: 5px solid #03af36;
+}
