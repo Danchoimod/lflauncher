@@ -71,7 +71,7 @@ function mouseOutJournal() {
   document.querySelector(".header__navbar-journal").classList.remove("header__navbar-item-subnav-show");
 }
 function chuyenTrang() {
-  window.location.href = "about.html";
+  window.location.href = "download.html";
 }
 function chuyenTranglist() {
   window.location.href = "download.html";
