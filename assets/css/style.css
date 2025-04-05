@@ -1717,3 +1717,58 @@ yl {
 .grey-background{
     background-color: #e5e5e5;
 }
+.space{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #52A535;
+    align-items: center;
+    justify-items: center;
+}
+.news-title{
+    font-size: 100px;
+    background-color: #52A535;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    color: white;
+    width: auto;
+    height: 200px;
+}
+.mcten{
+    font-family: 'mcten', sans-serif;
+}
+.feature{
+    padding-top: 50px;
+    padding-bottom: 50px    ;
+    color: white;
+    font-size: 50px;
+}
+.flower{
+    background-color: rgb(23,22,21);
+    display: flex;
+    gap: 10px;
+    width: auto;
+}
+.hoa .col .hinh{
+    width: 100%;
+}
+.hinh{
+    background-position: center;
+}
+.image{
+    width: auto;
+    background-color: rgba(54, 54, 54, 0.123);
+}
+.image img{
+    object-fit: contain;
+    height: 200px;
+}
+.column{
+    width: auto;
+    height: auto;
+    background-color: white;
+}
+.ten{
+    font-size: 12px;
+    font-weight: bold;
+}
