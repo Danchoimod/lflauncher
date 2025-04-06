@@ -1,5 +1,6 @@
 .app {
     overflow: hidden;
+    overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
 }
 .green-btn {
