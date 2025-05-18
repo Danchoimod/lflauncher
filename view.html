@@ -41,63 +41,70 @@
             <span style="margin:0 12px;">© 2025 LFLauncher</span>
         </div>
     </div>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
-  import {
-    getFirestore,
-    collection,
-    getDocs,
-    query,
-    orderBy
-  } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+ <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import { getDatabase, ref, get, query, orderByChild, limitToLast } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDbeiGpq8bCGIHT0f1pg3eLmxmnFKLuUqQ",
-    authDomain: "lflauncher.firebaseapp.com",
-    databaseURL: "https://lflauncher-default-rtdb.firebaseio.com",
-    projectId: "lflauncher",
-    storageBucket: "lflauncher.firebasestorage.app",
-    messagingSenderId: "528661623395",
-    appId: "1:528661623395:web:0b2322ba830548dc2b3e56",
-    measurementId: "G-617X1TP66E"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyDbeiGpq8bCGIHT0f1pg3eLmxmnFKLuUqQ",
+      authDomain: "lflauncher.firebaseapp.com",
+      databaseURL: "https://lflauncher-default-rtdb.firebaseio.com",
+      projectId: "lflauncher",
+      storageBucket: "lflauncher.firebasestorage.app",
+      messagingSenderId: "528661623395",
+      appId: "1:528661623395:web:0b2322ba830548dc2b3e56",
+      measurementId: "G-617X1TP66E"
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
 
-  async function showPosts() {
-    const postList = document.getElementById("postList");
-    const postsCol = collection(db, "posts");
-    const q = query(postsCol, orderBy("createdAt", "desc"));
-    const snapshot = await getDocs(q);
+    async function showPosts() {
+      const postList = document.getElementById("postList");
+      try {
+        // Giả sử trong realtime database có node "posts"
+        // Mình lấy 20 bài mới nhất theo createdAt (timestamp)
+        const postsRef = ref(db, "posts");
+        const postsQuery = query(postsRef, orderByChild("createdAt"), limitToLast(20));
+        const snapshot = await get(postsQuery);
 
-    if (snapshot.empty) {
-      postList.innerHTML = "<p>Chưa có bài viết nào.</p>";
-      return;
+        if (!snapshot.exists()) {
+          postList.innerHTML = "<p>Chưa có bài viết nào.</p>";
+          return;
+        }
+
+        // Lấy dữ liệu thành mảng và sắp xếp ngược (mới nhất lên đầu)
+        const posts = [];
+        snapshot.forEach(childSnap => {
+          posts.push({ id: childSnap.key, ...childSnap.val() });
+        });
+        posts.sort((a,b) => b.createdAt - a.createdAt);
+
+        postList.innerHTML = "";
+
+        posts.forEach(post => {
+          const createdAtStr = post.createdAt ? new Date(post.createdAt).toLocaleString() : "";
+
+          const div = document.createElement("div");
+          div.className = "post";
+          div.innerHTML = `
+            <img src="${post.image || 'https://via.placeholder.com/400x180?text=No+Image'}" alt="Ảnh bài viết" />
+            <div class="post-content">
+              <h3>${post.title || "Không có tiêu đề"}</h3>
+              <div class="date">${createdAtStr}</div>
+              <p>${post.content || ""}</p>
+            </div>
+          `;
+          postList.appendChild(div);
+        });
+      } catch (error) {
+        console.error("Lỗi tải bài viết:", error);
+        postList.innerHTML = "<p>Đã có lỗi xảy ra khi tải bài viết.</p>";
+      }
     }
 
-    postList.innerHTML = "";
-
-    snapshot.forEach(doc => {
-      const post = doc.data();
-      const createdAt = post.createdAt?.toDate ? post.createdAt.toDate().toLocaleString() : "";
-
-      const div = document.createElement("div");
-      div.className = "post";
-      div.innerHTML = `
-        <img src="${post.image}" alt="Ảnh bài viết">
-        <div class="post-content">
-          <h3>${post.title}</h3>
-          <div class="date">${createdAt}</div>
-          <p>${post.content}</p>
-        </div>
-      `;
-      postList.appendChild(div);
-    });
-  }
-
-  showPosts();
-</script>
+    showPosts();
+  </script>
 
 
 </body>
