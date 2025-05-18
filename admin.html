@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Admin - Quản lý Bài Viết</title>
   <style>
+    /* ... giữ nguyên CSS của bạn ... */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: sans-serif;
       padding: 20px;
       background: #f9f9f9;
     }
-
     input, textarea {
       width: 100%;
       margin-bottom: 10px;
@@ -23,7 +22,6 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-
     button {
       padding: 10px 15px;
       border: none;
@@ -31,37 +29,31 @@
       cursor: pointer;
       font-weight: bold;
     }
-
     #submitBtn {
       background-color: #28a745;
       color: white;
     }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       margin-top: 30px;
     }
-
     @media (max-width: 1024px) {
       .grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
-
     @media (max-width: 768px) {
       .grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
     @media (max-width: 480px) {
       .grid {
         grid-template-columns: 1fr;
       }
     }
-
     .post {
       background: white;
       border: 1px solid #ccc;
@@ -69,42 +61,34 @@
       overflow: hidden;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
-
     .post img {
       width: 100%;
       height: 150px;
       object-fit: cover;
     }
-
     .post-content {
       padding: 10px;
     }
-
     .post h3 {
       margin: 0 0 10px;
     }
-
     .post .date {
       font-size: 0.85em;
       color: gray;
     }
-
     .post p {
       font-size: 0.9em;
       color: #333;
     }
-
     .action-btns {
       display: flex;
       gap: 10px;
       margin-top: 10px;
     }
-
     .delete-btn {
       background: red;
       color: white;
     }
-
     .edit-btn {
       background: #007bff;
       color: white;
@@ -114,41 +98,112 @@
 <body>
 
   <h2>Thêm / Sửa Bài Viết</h2>
-  <input type="text" id="title" placeholder="Tiêu đề bài viết">
+  <input type="text" id="title" placeholder="Tiêu đề bài viết" />
   <textarea id="content" rows="5" placeholder="Nội dung bài viết"></textarea>
 
   <label>Chọn ảnh từ máy:</label>
-  <input type="file" id="imageInput" accept="image/*">
+  <input type="file" id="imageInput" accept="image/*" />
 
   <label>Hoặc dán URL ảnh:</label>
-  <input type="text" id="imageURL" placeholder="https://...jpg">
+  <input type="text" id="imageURL" placeholder="https://...jpg" />
 
-  <br><br>
+  <br /><br />
   <button id="submitBtn" onclick="submitPost()">Thêm bài viết</button>
 
-  <hr>
+  <hr />
   <h2>Danh Sách Bài Viết</h2>
   <div class="grid" id="postList"></div>
 
-  <script>
+  <script type="module">
+    // Import Firebase SDK modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      getDocs,
+      doc,
+      updateDoc,
+      deleteDoc,
+      query,
+      orderBy,
+      serverTimestamp,
+      getDoc
+    } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDbeiGpq8bCGIHT0f1pg3eLmxmnFKLuUqQ",
+      authDomain: "lflauncher.firebaseapp.com",
+      databaseURL: "https://lflauncher-default-rtdb.firebaseio.com",
+      projectId: "lflauncher",
+      storageBucket: "lflauncher.firebasestorage.app",
+      messagingSenderId: "528661623395",
+      appId: "1:528661623395:web:0b2322ba830548dc2b3e56",
+      measurementId: "G-617X1TP66E"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
     let editId = null;
 
-    function getPosts() {
-      return JSON.parse(localStorage.getItem("posts")) || [];
+    const postListElem = document.getElementById("postList");
+
+    async function getPosts() {
+      const postsCol = collection(db, "posts");
+      const q = query(postsCol, orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
+      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     }
 
-    function savePosts(posts) {
-      localStorage.setItem("posts", JSON.stringify(posts));
+    async function savePost(post) {
+      if (post.id) {
+        // update
+        const postRef = doc(db, "posts", post.id);
+        await updateDoc(postRef, {
+          title: post.title,
+          content: post.content,
+          image: post.image,
+          createdAt: serverTimestamp()
+        });
+      } else {
+        // add new
+        await addDoc(collection(db, "posts"), {
+          title: post.title,
+          content: post.content,
+          image: post.image,
+          createdAt: serverTimestamp()
+        });
+      }
     }
 
-    function clearForm() {
-      document.getElementById("title").value = "";
-      document.getElementById("content").value = "";
-      document.getElementById("imageInput").value = "";
-      document.getElementById("imageURL").value = "";
+    async function deletePost(id) {
+      if (!confirm("Bạn có chắc muốn xóa bài viết này?")) return;
+      await deleteDoc(doc(db, "posts", id));
+      renderPosts();
     }
 
-    function submitPost() {
+    async function editPost(id) {
+      const postRef = doc(db, "posts", id);
+      const postSnap = await getDoc(postRef);
+      if (!postSnap.exists()) return alert("Bài viết không tồn tại");
+
+      const post = postSnap.data();
+
+      document.getElementById("title").value = post.title;
+      document.getElementById("content").value = post.content;
+      document.getElementById("imageURL").value = post.image.startsWith("data:") ? "" : post.image;
+
+      editId = id;
+      document.getElementById("submitBtn").textContent = "Cập nhật bài viết";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    async function submitPost() {
       const title = document.getElementById("title").value.trim();
       const content = document.getElementById("content").value.trim();
       const imageInput = document.getElementById("imageInput");
@@ -159,30 +214,15 @@
         return;
       }
 
-      const handleSave = (imageData) => {
-        const posts = getPosts();
-
-        if (editId) {
-          const index = posts.findIndex(p => p.id === editId);
-          if (index !== -1) {
-            posts[index].title = title;
-            posts[index].content = content;
-            posts[index].image = imageData;
-            posts[index].createdAt = new Date().toLocaleString();
-          }
-          editId = null;
-          document.getElementById("submitBtn").textContent = "Thêm bài viết";
-        } else {
-          posts.push({
-            id: Date.now(),
-            title,
-            content,
-            image: imageData,
-            createdAt: new Date().toLocaleString()
-          });
-        }
-
-        savePosts(posts);
+      const handleSave = async (imageData) => {
+        await savePost({
+          id: editId,
+          title,
+          content,
+          image: imageData
+        });
+        editId = null;
+        document.getElementById("submitBtn").textContent = "Thêm bài viết";
         clearForm();
         renderPosts();
       };
@@ -197,60 +237,54 @@
         handleSave(imageURL);
       } else {
         if (editId) {
-          const post = getPosts().find(p => p.id === editId);
-          handleSave(post.image);
+          // giữ ảnh cũ
+          const postRef = doc(db, "posts", editId);
+          const postSnap = await getDoc(postRef);
+          const oldImage = postSnap.exists() ? postSnap.data().image : "";
+          handleSave(oldImage);
         } else {
           alert("Vui lòng chọn ảnh từ máy hoặc dán URL ảnh.");
         }
       }
     }
 
-    function deletePost(id) {
-      if (!confirm("Bạn có chắc muốn xóa bài viết này?")) return;
-      let posts = getPosts();
-      posts = posts.filter(post => post.id !== id);
-      savePosts(posts);
-      renderPosts();
+    function clearForm() {
+      document.getElementById("title").value = "";
+      document.getElementById("content").value = "";
+      document.getElementById("imageInput").value = "";
+      document.getElementById("imageURL").value = "";
     }
 
-    function editPost(id) {
-      const post = getPosts().find(p => p.id === id);
-      if (!post) return;
+    async function renderPosts() {
+      const posts = await getPosts();
+      postListElem.innerHTML = "";
 
-      document.getElementById("title").value = post.title;
-      document.getElementById("content").value = post.content;
-      document.getElementById("imageURL").value = post.image.startsWith("data:") ? "" : post.image;
-
-      editId = id;
-      document.getElementById("submitBtn").textContent = "Cập nhật bài viết";
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function renderPosts() {
-      const postList = document.getElementById("postList");
-      const posts = getPosts();
-      postList.innerHTML = "";
-
-      posts.forEach(post => {
+      posts.forEach((post) => {
         const div = document.createElement("div");
         div.className = "post";
         div.innerHTML = `
-          <img src="${post.image}" alt="Ảnh bài viết">
+          <img src="${post.image}" alt="Ảnh bài viết" />
           <div class="post-content">
             <h3>${post.title}</h3>
-            <div class="date">${post.createdAt}</div>
+            <div class="date">${post.createdAt?.toDate ? post.createdAt.toDate().toLocaleString() : ""}</div>
             <p>${post.content}</p>
             <div class="action-btns">
-              <button class="edit-btn" onclick="editPost(${post.id})">Sửa</button>
-              <button class="delete-btn" onclick="deletePost(${post.id})">Xóa</button>
+              <button class="edit-btn" onclick="editPost('${post.id}')">Sửa</button>
+              <button class="delete-btn" onclick="deletePost('${post.id}')">Xóa</button>
             </div>
           </div>
         `;
-        postList.appendChild(div);
+        postListElem.appendChild(div);
       });
     }
 
+    // Khởi tạo khi load trang
     renderPosts();
+
+    // Để các hàm có thể gọi từ onclick trong HTML
+    window.submitPost = submitPost;
+    window.editPost = editPost;
+    window.deletePost = deletePost;
   </script>
 
 </body>

@@ -81,7 +81,7 @@ h2 {
 }
 @font-face {
   font-family: 'MinecraftFont';
-  src: url('assets/font/MinecraftTen-VGORe.ttf') format('truetype');
+  src: url('assets\font\MinecraftTen-VGORe.ttf') format('truetype');
 }
 .new-title{
     font-family: 'MinecraftFont';
