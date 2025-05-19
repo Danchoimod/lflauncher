@@ -178,13 +178,11 @@ nav {
 }
 
 .layer-mid {
-  background-image: url('https://i.imgur.com/Fs3L9sd.png'); /* Layer giữa */
   z-index: 2;
   opacity: 0.7;
 }
 
 .layer-front {
-  background-image: url('https://i.imgur.com/w1gkMgB.png'); /* Layer trước */
   z-index: 3;
   opacity: 1;
 }
