@@ -171,7 +171,7 @@ nav {
 }
 
 .layer-back {
-  background-image: url('https://images3.alphacoders.com/132/thumb-1920-1321959.png'); /* Mờ và xa */
+  background-image: url('../assets/img/thumb-1920-1321959.png'); /* Mờ và xa */
   filter: blur(2px);
   z-index: 1;
   opacity: 0.4;
