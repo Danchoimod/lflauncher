@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">LFLauncher</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/scriptclone.js"></script>
+  <script type="module" src="js/login.js"></script>
+  <script src="js/i18n.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo" data-i18n="title">LFLauncher</div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#" data-i18n="home">Trang chủ</a></li>
+          <li class="dropdown">
+            <a href="#" tabindex="0" data-i18n="features_menu">Tính năng ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="#features" data-i18n="main_features">Tính năng chính</a></li>
+              <li><a href="#install-steps" data-i18n="install_guide">Hướng dẫn cài đặt</a></li>
+              <li><a href="#download" data-i18n="download">Tải xuống</a></li>
+              <li><a href="#faq" data-i18n="faq">FAQ</a></li>
+            </ul>
+          </li>
+          <li><a href="support.html" data-i18n="support">Hỗ trợ</a></li>
+          <li><a href="#download" data-i18n="download">Tải xuống</a></li>
+            <li>
+            <button id="loginBtn" class="btn-login" data-i18n="login" onclick="checkLogin()">Đăng nhập</button>
+            </li>
+          <li>
+            <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle theme">🌙</button>
+          </li>
+          <li>
+            <select id="languageSelect" aria-label="Chọn ngôn ngữ" data-i18n="select_language">
+              <option value="vi" data-i18n="lang_vi">Tiếng Việt</option>
+              <option value="en" data-i18n="lang_en">English</option>
+              <option value="fr" data-i18n="lang_fr">Français</option>
+            </select>
+          </li>
+
+        </ul>
+        <button class="btn-menu-toggle" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="parallax-layer layer-back"></div>
+    <div class="parallax-layer layer-mid"></div>
+    <div class="parallax-layer layer-front"></div>
+    <div class="container hero-content">
+      <h1 class="animate-on-scroll" data-i18n="hero_title">LFLauncher - Trình khởi chạy Minecraft tốt nhất</h1>
+      <p class="animate-on-scroll delay-1" data-i18n="hero_description">Dễ dàng cài đặt mod, cấu hình và chơi Minecraft
+        miễn phí.</p>
+      <a href="#download" class="btn-download animate-on-scroll delay-2" data-i18n="download_free">Tải xuống miễn
+        phí</a>
+    </div>
+  </section>
+
+  <section id="features" class="features container">
+    <h2 data-i18n="features_title">Tính năng nổi bật</h2>
+    <div class="feature-list">
+      <article class="feature-item animate-on-scroll">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2v20M2 12h20" stroke="#f39c12" stroke-width="2" />
+        </svg>
+        <h3 data-i18n="feature_easy">Dễ sử dụng</h3>
+        <p data-i18n="feature_easy_desc">Giao diện thân thiện, dễ dàng với mọi người dùng.</p>
+      </article>
+      <article class="feature-item animate-on-scroll delay-1">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="#f39c12" stroke-width="2" />
+        </svg>
+        <h3 data-i18n="feature_mod">Hỗ trợ mod</h3>
+        <p data-i18n="feature_mod_desc">Tích hợp nhiều mod Minecraft phổ biến.</p>
+      </article>
+      <article class="feature-item animate-on-scroll delay-2">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="4" width="16" height="16" stroke="#f39c12" stroke-width="2" />
+        </svg>
+        <h3 data-i18n="feature_cross_platform">Tương thích đa nền tảng</h3>
+        <p data-i18n="feature_cross_platform_desc">Chạy tốt trên Windows, macOS và Linux.</p>
+      </article>
+      <article class="feature-item animate-on-scroll delay-3">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <path d="M2 12l5 5 15-15" stroke="#f39c12" stroke-width="2" />
+        </svg>
+        <h3 data-i18n="feature_secure">Bảo mật cao</h3>
+        <p data-i18n="feature_secure_desc">Bảo vệ tài khoản và dữ liệu người dùng.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="install-steps" class="install-steps container">
+    <h2 data-i18n="install_title">Hướng dẫn cài đặt</h2>
+    <ol>
+      <li data-i18n="install_step_1">Tải LFLauncher về máy.</li>
+      <li data-i18n="install_step_2">Mở file cài đặt và làm theo hướng dẫn.</li>
+      <li data-i18n="install_step_3">Đăng nhập hoặc tạo tài khoản Minecraft.</li>
+      <li data-i18n="install_step_4">Chọn phiên bản Minecraft và bắt đầu chơi.</li>
+    </ol>
+  </section>
+
+  <section id="download" class="download-section container">
+    <h2 data-i18n="download_versions">Tải xuống các phiên bản</h2>
+    <div class="download-list">
+      <article class="download-item animate-on-scroll">
+        <h3 data-i18n="win_version">Phiên bản Windows</h3>
+        <p data-i18n="win_desc">Hỗ trợ Windows 7 trở lên, 64-bit và 32-bit.</p>
+        <a href="download.html" class="btn-download" data-i18n="download_windows">Tải xuống Windows</a>
+      </article>
+      <article class="download-item animate-on-scroll delay-1">
+        <h3 data-i18n="mac_version">Phiên bản macOS</h3>
+        <p data-i18n="mac_desc">Tương thích với macOS 10.12 trở lên.</p>
+        <a href="#" class="btn-download" data-i18n="download_mac">Tải xuống macOS</a>
+      </article>
+      <article class="download-item animate-on-scroll delay-2">
+        <h3 data-i18n="linux_version">Phiên bản Linux</h3>
+        <p data-i18n="linux_desc">Phù hợp với các bản phân phối phổ biến.</p>
+        <a href="#" class="btn-download" data-i18n="download_linux">Tải xuống Linux</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="faq" class="faq container">
+    <h2 data-i18n="faq_title">Câu hỏi thường gặp (FAQ)</h2>
+    <div class="accordion">
+      <button class="accordion-header" aria-expanded="false" data-i18n="faq_q1">LFLauncher có miễn phí không?</button>
+      <div class="accordion-body">
+        <p data-i18n="faq_a1">Có, LFLauncher hoàn toàn miễn phí để tải và sử dụng.</p>
+      </div>
+      <button class="accordion-header" aria-expanded="false" data-i18n="faq_q2">Làm thế nào để cài mod?</button>
+      <div class="accordion-body">
+        <p data-i18n="faq_a2">Bạn có thể thêm mod vào thư mục mods trong LFLauncher hoặc sử dụng tính năng tích hợp mod
+          manager.</p>
+      </div>
+      <button class="accordion-header" aria-expanded="false" data-i18n="faq_q3">LFLauncher có an toàn không?</button>
+      <div class="accordion-body">
+        <p data-i18n="faq_a3">LFLauncher đảm bảo bảo mật tài khoản người dùng với mã hóa hiện đại và không chia sẻ thông
+          tin với bên thứ ba.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="socials">
+        <a href="#" aria-label="Facebook" title="Facebook">
+         <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#1877F3"/><path d="M26 34v-8h3l1-4h-4v-2c0-1 .5-1.5 1.5-1.5H30v-4h-3c-3 0-5 2-5 5v2h-3v4h3v8h4z" fill="#fff"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter" title="Twitter">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#5865F2"/><path d="M34 32c-2-1-2-1-2-1s0-1 0-2c2-1 3-3 3-5-1-6-7-7-11-7s-10 1-11 7c0 2 1 4 3 5 0 1 0 2 0 2s0 0-2 1c0 0 2 2 8 2s8-2 8-2z" fill="#fff"/><ellipse cx="19" cy="27" rx="2" ry="1.5" fill="#5865F2"/><ellipse cx="29" cy="27" rx="2" ry="1.5" fill="#5865F2"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" title="YouTube">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#fff"/><path d="M16 16h4l4 5 4-5h4l-6 7 6 9h-4l-4-6-4 6h-4l6-9-6-7z" fill="#000"/></svg>
+        </a>
+        <a href="#" aria-label="Discord" title="Discord">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#FF0000"/><polygon points="20,16 34,24 20,32" fill="#fff"/></svg>
+        </a>
+      </div>
+      <p>© 2025 LFLauncher Pro Clone. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal đăng nhập -->
+  <div id="loginModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="modalTitle" data-i18n="login_title">Đăng nhập</h2>
+      <form id="loginForm">
+        <label for="username" data-i18n="username_label">Tên đăng nhập:</label>
+        <input type="text" id="username" name="username" required autocomplete="username" />
+        <label for="password" data-i18n="password_label">Mật khẩu:</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password" />
+        <button type="submit" class="btn-download" data-i18n="login">Đăng nhập</button>
+      </form>
+      <p id="loginMessage" style="color:red; margin-top:10px;"></p>
+    </div>
+  </div>
+</body>
+
+</html>

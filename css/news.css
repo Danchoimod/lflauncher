@@ -1,0 +1,93 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  box-sizing: border-box;
+}
+
+.app{
+    background-color: #171615;
+}
+h2 {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    background-color: #171615;
+    margin-top: 30px;
+
+    padding: 0 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.post {
+    background: #262423;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.post img {
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 15px;
+}
+
+.post h3 {
+    margin: 0 0 10px;
+    font-size: 1.1em;
+    color: #ffffff;
+}
+
+.post .date {
+    font-size: 0.85em;
+    color: #b3b3b3;
+    margin-bottom: 10px;
+}
+
+.post p {
+    font-size: 0.95em;
+    color: #b3b3b3;
+}
+@font-face {
+  font-family: 'MinecraftFont';
+  src: url('assets\img\MinecraftTen-VGORe.ttf') format('truetype');
+}
+.new-title{
+    font-family: 'MinecraftFont';
+    font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 30px;
+}

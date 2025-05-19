@@ -1,0 +1,56 @@
+{
+  "title": "LFLauncher",
+  "home": "Home",
+  "features_menu": "Features ▾",
+  "main_features": "Main Features",
+  "install_guide": "Installation Guide",
+  "download": "Download",
+  "faq": "FAQ",
+  "support": "Support",
+  "login": "Login",
+  
+  "hero_title": "LFLauncher - The Best Minecraft Launcher",
+  "hero_description": "Easily install mods, configure, and play Minecraft for free.",
+  "download_free": "Download Free",
+  
+  "features_title": "Outstanding Features",
+  "feature_easy": "Easy to Use",
+  "feature_easy_desc": "User-friendly interface for everyone.",
+  "feature_mod": "Mod Support",
+  "feature_mod_desc": "Integrated with many popular Minecraft mods.",
+  "feature_cross_platform": "Cross-Platform",
+  "feature_cross_platform_desc": "Works well on Windows, macOS, and Linux.",
+  "feature_secure": "High Security",
+  "feature_secure_desc": "Protects user accounts and data.",
+  
+  "install_title": "Installation Guide",
+  "install_step_1": "Download LFLauncher to your device.",
+  "install_step_2": "Open the installer and follow the instructions.",
+  "install_step_3": "Log in or create a Minecraft account.",
+  "install_step_4": "Choose a Minecraft version and start playing.",
+  
+  "download_versions": "Download Versions",
+  "win_version": "Windows Version",
+  "win_desc": "Supports Windows 7 and above, both 64-bit and 32-bit.",
+  "download_windows": "Download for Windows",
+  "mac_version": "macOS Version",
+  "mac_desc": "Compatible with macOS 10.12 and above.",
+  "download_mac": "Download for macOS",
+  "linux_version": "Linux Version",
+  "linux_desc": "Suitable for popular Linux distributions.",
+  "download_linux": "Download for Linux",
+  
+  "faq_title": "Frequently Asked Questions (FAQ)",
+  "faq_q1": "Is LFLauncher free?",
+  "faq_a1": "Yes, LFLauncher is completely free to download and use.",
+  "faq_q2": "How do I install mods?",
+  "faq_a2": "You can add mods to the 'mods' folder or use the built-in mod manager.",
+  "faq_q3": "Is LFLauncher safe?",
+  "faq_a3": "LFLauncher ensures user account security with modern encryption and does not share information with third parties.",
+  
+  "copyright": "© 2025 LFLauncher Pro Clone. All rights reserved.",
+  
+  "login_title": "Login",
+  "username_label": "Username:",
+  "password_label": "Password:"
+}

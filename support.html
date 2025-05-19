@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LFLauncher</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/scriptclone.js"></script>
+<script type="module" src="js/login.js"></script>
+<script type="module" src="js/support.js"></script>
+  <script src="js/i18n.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo" data-i18n="title">LFLauncher</div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html" data-i18n="home">Trang chủ</a></li>
+          <li class="dropdown">
+            <a href="#" tabindex="0" data-i18n="features_menu">Tính năng ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="#features" data-i18n="main_features">Tính năng chính</a></li>
+              <li><a href="#install-steps" data-i18n="install_guide">Hướng dẫn cài đặt</a></li>
+              <li><a href="#download" data-i18n="download">Tải xuống</a></li>
+              <li><a href="#faq" data-i18n="faq">FAQ</a></li>
+            </ul>
+          </li>
+          <li><a href="support.html" data-i18n="support">Hỗ trợ</a></li>
+          <li><a href="#download" data-i18n="download">Tải xuống</a></li>
+            <li>
+            <button id="loginBtn" class="btn-login" data-i18n="login" onclick="checkLogin()">Đăng nhập</button>
+            </li>
+          <li>
+            <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle theme">🌙</button>
+          </li>
+          <li>
+            <select id="languageSelect" aria-label="Chọn ngôn ngữ" data-i18n="select_language">
+              <option value="vi" data-i18n="lang_vi">Tiếng Việt</option>
+              <option value="en" data-i18n="lang_en">English</option>
+              <option value="fr" data-i18n="lang_fr">Français</option>
+            </select>
+          </li>
+
+        </ul>
+        <button class="btn-menu-toggle" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="support-main-modern">
+    <section class="support-banner">
+      <h1>Chúng tôi luôn bên bạn</h1>
+      <p>Mọi thắc mắc, yêu cầu đều được phản hồi nhanh chóng và tận tâm</p>
+      <button id="openSupportFormBtn" class="btn-primary">Gửi yêu cầu hỗ trợ</button>
+    </section>
+
+    <section class="support-cards">
+      <article class="card">
+        <div class="card-icon">❓</div>
+        <h3>Hỏi đáp nhanh</h3>
+        <p>Tổng hợp các câu hỏi thường gặp giúp bạn giải quyết vấn đề ngay lập tức.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">📞</div>
+        <h3>Liên hệ trực tiếp</h3>
+        <p>Gọi hotline 1900 1234 hoặc gửi email cho chúng tôi để được hỗ trợ cá nhân.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">💬</div>
+        <h3>Chat với chuyên viên</h3>
+        <p>Kết nối trực tiếp với đội ngũ hỗ trợ qua chat online 24/7.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="socials">
+        <a href="#" aria-label="Facebook" title="Facebook">
+         <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#1877F3"/><path d="M26 34v-8h3l1-4h-4v-2c0-1 .5-1.5 1.5-1.5H30v-4h-3c-3 0-5 2-5 5v2h-3v4h3v8h4z" fill="#fff"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter" title="Twitter">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#5865F2"/><path d="M34 32c-2-1-2-1-2-1s0-1 0-2c2-1 3-3 3-5-1-6-7-7-11-7s-10 1-11 7c0 2 1 4 3 5 0 1 0 2 0 2s0 0-2 1c0 0 2 2 8 2s8-2 8-2z" fill="#fff"/><ellipse cx="19" cy="27" rx="2" ry="1.5" fill="#5865F2"/><ellipse cx="29" cy="27" rx="2" ry="1.5" fill="#5865F2"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" title="YouTube">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#fff"/><path d="M16 16h4l4 5 4-5h4l-6 7 6 9h-4l-4-6-4 6h-4l6-9-6-7z" fill="#000"/></svg>
+        </a>
+        <a href="#" aria-label="Discord" title="Discord">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#FF0000"/><polygon points="20,16 34,24 20,32" fill="#fff"/></svg>
+        </a>
+      </div>
+      <p>© 2025 LFLauncher Pro Clone. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal đăng nhập -->
+<div id="loginModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Close">&times;</button>
+    <h2 id="modalTitle">Đăng nhập</h2>
+    <form id="loginForm">
+      <label for="username">Tên đăng nhập:</label>
+      <input type="text" id="username" name="username" required autocomplete="username" />
+      <label for="password">Mật khẩu:</label>
+      <input type="password" id="password" name="password" required autocomplete="current-password" />
+      <button type="submit" class="btn-download">Đăng nhập</button>
+    </form>
+    <p id="loginMessage" style="color:red; margin-top:10px;"></p>
+  </div>
+</div>
+
+  <!-- Modal hỗ trợ -->
+  <div id="supportModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="supportTitle">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="supportTitle">Gửi yêu cầu hỗ trợ</h2>
+      <form id="modalSupportForm">
+        <label for="supportName">Họ và tên:</label>
+        <input type="text" id="supportName" required />
+        <label for="supportEmail">Email:</label>
+        <input type="email" id="supportEmail" required />
+        <label for="supportMessage">Nội dung yêu cầu:</label>
+        <textarea id="supportMessage" required></textarea>
+        <button type="submit" class="btn-download">Gửi</button>
+        <p id="modalFormResponse" class="response-message"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script xử lý modal -->
+  <script>
+
+  </script>
+</body>
+</html>

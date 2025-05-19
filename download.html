@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chuyển hướng tải xuống</title>
+  <link rel="stylesheet" href="css/countdown.css" />
+</head>
+<body>
+  <div class="container" role="main" aria-live="polite" aria-atomic="true">
+    <h1>Chuẩn bị tải xuống...</h1>
+    <p>Bạn sẽ được chuyển hướng sau:</p>
+    <div class="countdown" id="countdown">5</div>
+    <a href="files/tlauncher-installer.exe" download class="btn-download" id="downloadNow">Tải xuống ngay</a>
+  </div>
+
+  <script>
+    (function(){
+      const countdownEl = document.getElementById('countdown');
+      const downloadLink = document.getElementById('downloadNow').href;
+      let count = 5;
+
+      const interval = setInterval(() => {
+        count--;
+        if(count <= 0) {
+          clearInterval(interval);
+          window.location.href = downloadLink;
+        } else {
+          countdownEl.textContent = count;
+        }
+      }, 1000);
+
+      // Nếu người dùng click "Tải xuống ngay" thì dừng đếm ngược luôn (không bắt buộc, tùy chọn)
+      document.getElementById('downloadNow').addEventListener('click', () => {
+        clearInterval(interval);
+      });
+    })();
+  </script>
+</body>
+</html>

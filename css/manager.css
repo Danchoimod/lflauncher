@@ -1,0 +1,67 @@
+
+    body { margin: 0; font-family: Arial, sans-serif; background: #f5f5f5; }
+    .container { display: flex; }
+    .sidebar {
+      width: 220px; background: #2c3e50; color: white; min-height: 100vh; padding: 20px;
+    }
+    .sidebar .logo { font-size: 24px; font-weight: bold; margin-bottom: 20px; }
+    .sidebar nav a {
+      display: block; color: white; text-decoration: none; margin: 10px 0; padding: 8px;
+      border-radius: 4px;
+    }
+    .sidebar nav a.active, .sidebar nav a:hover { background-color: #34495e; }
+    .main-content { flex-grow: 1; padding: 20px; }
+    .header { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+    .header button {
+      padding: 10px 20px; background-color: #e74c3c; color: white; border: none;
+      border-radius: 4px; cursor: pointer;
+    }
+    .modal {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: none;
+      align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.5); z-index: 999;
+    }
+    .modal-content {
+      background: white; padding: 20px; width: 400px; border-radius: 10px; position: relative;
+    }
+    .modal-content input, .modal-content select {
+      width: 100%; margin: 5px 0 10px; padding-top: 8px; padding-bottom: 8px;
+    }
+    .modal-content button {
+      width: 100%; padding: 10px; background-color: #27ae60; border: none;
+      color: white; font-weight: bold; border-radius: 5px; cursor: pointer;
+    }
+    .modal-content .close {
+      position: absolute; top: 5px; right: 10px; font-size: 20px; cursor: pointer;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .code-item {
+      background: white; padding: 15px; border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; gap: 15px; align-items: center;
+    }
+    .code-item img {
+      width: 70px; height: 70px; border-radius: 8px;
+    }
+    .code-info { flex: 1; }
+    .code-info h3 { margin: 0; }
+    .code-info p { margin: 4px 0; font-size: 14px; }
+    .code-info a { color: #3498db; }
+    .action-btns button {
+      margin-right: 5px; padding: 5px 10px; font-size: 13px; cursor: pointer;
+      border: none; border-radius: 4px;
+    }
+    .edit-btn { background-color: #2980b9; color: white; }
+    .delete-btn { background-color: #c0392b; color: white; }
+    .tab-btn.active { background-color: #2980b9; color: white; }
+    .tab-btn { margin-right: 5px; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer; }
+.bluebtn{
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

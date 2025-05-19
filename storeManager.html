@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quản lý Market - LF Admin</title>
+    <link rel="stylesheet" href="css/store.css">
+
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">LF Admin</div>
+      <nav>
+        <a href="#" >Dashboard</a>
+        <a href="admin.html">Posts</a>
+        <a href="VersionManagerv2.html">Version</a>
+        <a href="storeManager.html"class="active">MarketPlace</a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header class="header">
+        <button id="logoutBtn">Đăng xuất</button>
+      </header>
+
+      <button class="bluebtn" id="openFormBtn">Thêm Gói</button>
+
+      <div id="formModal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="closeFormBtn">&times;</span>
+          <h3>Thêm / Sửa Gói</h3>
+          <input type="text" id="marketName" placeholder="Tên gói" />
+          <input type="text" id="marketDescription" placeholder="Mô tả" />
+          <input type="text" id="marketDisplay" placeholder="Hiển thị" />
+          <input type="text" id="marketLink" placeholder="Link tải" />
+          <input type="text" id="marketOwner" placeholder="Chủ sở hữu" />
+          <input type="text" id="marketVersion" placeholder="Phiên bản" />
+          <select id="marketType">
+            <option value="Addon">Addon</option>
+            <option value="Maps">Maps</option>
+            <option value="Textures">Textures</option>
+            <option value="Behavior Pack">Server</option>
+            <option value="Skins">Skins</option>
+          </select>
+          <input type="number" id="marketRate" placeholder="Đánh giá" />
+          <input type="file" id="marketImageFile" accept="image/*" />
+          <input type="text" id="marketImageUrl" placeholder="URL ảnh (nếu có)" />
+          <img id="previewImage" src="" style="max-width: 150px; margin-top: 10px; border-radius: 8px;" />
+          <button id="submitBtn">Lưu</button>
+        </div>
+      </div>
+
+      <section>
+        <h2>Danh sách Gói</h2>
+        <div class="grid" id="marketList"></div>
+      </section>
+    </div>
+  </div>
+
+
+<script type="module" src="js/logout.js"></script>
+<script type="module" src="js/store.js"></script>
+</body>
+</html>

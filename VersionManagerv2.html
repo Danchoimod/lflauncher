@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quản lý Client - LF Admin</title>
+  <link rel="stylesheet" href="css/manager.css">
+   <script type="module" src="js/logout.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">LF Admin</div>
+      <nav>
+        <a href="#">Dashboard</a>
+        <a href="admin.html">Posts</a>
+        <a href="VersionManagerv2.html" class="active">Version </a>
+        <a href="storeManager.html">MarketPlace</a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header class="header">
+        <button id="logoutBtn">Đăng xuất</button>
+      </header>
+
+      <button class="bluebtn" id="openFormBtn">Thêm Phiên bản</button>
+
+      <div id="codeFormModal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="closeFormBtn">&times;</span>
+          <h3>Thêm / Sửa Client</h3>
+          <input type="text" id="codeTitle" placeholder="Tên client" />
+          <input type="text" id="codeName" placeholder="Tên nội bộ" />
+            <input type="checkbox" id="addDollarCheckbox" />
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const codeNameInput = document.getElementById("codeName");
+                const addDollarCheckbox = document.getElementById("addDollarCheckbox");
+
+                addDollarCheckbox.addEventListener("change", function() {
+                    let val = codeNameInput.value;
+                    if (this.checked) {
+                        if (!val.endsWith("$")) codeNameInput.value = val + "$";
+                    } else {
+                        if (val.endsWith("$")) codeNameInput.value = val.slice(0, -1);
+                    }
+                });
+
+                codeNameInput.addEventListener("input", function() {
+                    if (addDollarCheckbox.checked && !this.value.endsWith("$")) {
+                        this.value += "$";
+                    }
+                });
+            });
+        </script>
+          <input type="text" id="codePack" placeholder="Package name" />
+          <input type="text" id="codeUrl" placeholder="Link APK" />
+          <input type="text" id="codeDate" placeholder="Ngày (VD: 11 thg 1 2025)" />
+          <input type="file" id="imageInput" accept="image/*" />
+          <input type="text" id="codeImage" placeholder="URL ảnh nếu không tải từ máy" />
+          <img id="previewImage" src="" style="max-width: 150px; margin-top: 10px; border-radius: 8px;" />
+          <select id="codeType">
+            <option value="modded">Modded</option>
+            <option value="all">Vanilla</option>
+            <option value="beta">Beta</option>
+            <option value="other">Other</option>
+            <option value="patch">Patch</option>
+          </select>
+          <button id="submitCodeBtn">Lưu</button>
+        </div>
+      </div>
+
+      <section>
+        <h2>Danh sách Client</h2>
+        <div id="tabs" style="margin-bottom: 15px;">
+          <button class="tab-btn active" data-filter="all">All</button>
+          <button class="tab-btn" data-filter="modded">Modded</button>
+          <button class="tab-btn" data-filter="patch">patch</button>
+          <button class="tab-btn" data-filter="beta">Beta</button>
+          <button class="tab-btn" data-filter="other">Other</button>
+          <button class="tab-btn" data-filter="Error">Error</button>
+        </div>
+        <div id="codeList" class="grid"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Firebase + App Logic -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import { getDatabase, ref, onValue, set, push, update, remove } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDbeiGpq8bCGIHT0f1pg3eLmxmnFKLuUqQ",
+      authDomain: "lflauncher.firebaseapp.com",
+      databaseURL: "https://lflauncher-default-rtdb.firebaseio.com",
+      projectId: "lflauncher",
+      storageBucket: "lflauncher.appspot.com",
+      messagingSenderId: "528661623395",
+      appId: "1:528661623395:web:0b2322ba830548dc2b3e56"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const codeListElem = document.getElementById("codeList");
+    const modal = document.getElementById("codeFormModal");
+    const openBtn = document.getElementById("openFormBtn");
+    const closeBtn = document.getElementById("closeFormBtn");
+    const submitBtn = document.getElementById("submitCodeBtn");
+    const previewImage = document.getElementById("previewImage");
+    const imageInput = document.getElementById("imageInput");
+    const imageUrlInput = document.getElementById("codeImage");
+
+    let editingId = null;
+    let base64Image = "";
+
+    openBtn.onclick = () => { clearForm(); modal.style.display = "flex"; };
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+
+    imageInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        base64Image = reader.result;
+        previewImage.src = base64Image;
+        imageUrlInput.value = "";
+      };
+      reader.readAsDataURL(file);
+    });
+
+    imageUrlInput.addEventListener("input", () => {
+      if (imageUrlInput.value) {
+        previewImage.src = imageUrlInput.value;
+        base64Image = "";
+      }
+    });
+
+    function clearForm() {
+      editingId = null;
+      base64Image = "";
+      document.getElementById("codeTitle").value = "";
+      document.getElementById("codeName").value = "Mojang AB";
+      document.getElementById("codePack").value = "com.mojang.minecraftpe";
+      document.getElementById("codeUrl").value = "";
+    const now = new Date();
+    const formattedDate = now.getDate() + " thg " + (now.getMonth() + 1) + " " + now.getFullYear() + " " +
+      now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
+    document.getElementById("codeDate").value = formattedDate;
+      document.getElementById("codeImage").value = "";
+      document.getElementById("codeType").value = "all";
+      previewImage.src = "";
+      imageInput.value = "";
+    }
+
+    submitBtn.onclick = async () => {
+  const code = {
+    title: document.getElementById("codeTitle").value,
+    name: document.getElementById("codeName").value,
+    pack: document.getElementById("codePack").value,
+    code: document.getElementById("codeUrl").value,
+    date: document.getElementById("codeDate").value,
+    image: base64Image || imageUrlInput.value,
+    type: document.getElementById("codeType").value,
+    servermessage: "on"
+  };
+
+  if (!code.title || !code.code) return alert("Nhập ít nhất tên và URL!");
+
+  if (editingId) {
+    await update(ref(db, `code/${editingId}`), code);
+  } else {
+    const newRef = push(ref(db, "code"));
+    code.key = newRef.key; // 🔥 Thêm dòng này để lưu key tự động vào data
+    await set(newRef, code);
+  }
+
+  modal.style.display = "none";
+  clearForm();
+};
+
+
+    let allCodes = {};
+    let currentFilter = "all";
+
+    function renderCodes() {
+      codeListElem.innerHTML = "";
+      Object.entries(allCodes).forEach(([key, item]) => {
+        if (
+  (currentFilter === "release" && ["modded", "vanilla", "beta", "all"].includes(item.type)) ||
+  (currentFilter === "error" && !["modded", "vanilla", "beta", "all"].includes(item.type)) ||
+  item.type === currentFilter
+)
+ {
+          const div = document.createElement("div");
+          div.className = "code-item";
+          div.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" />
+            <div class="code-info">
+              <h3>${item.title} (${item.type})</h3>
+              <p>Ngày: ${item.date}</p>
+              <p>Package: ${item.pack}</p>
+              <a href="${item.code}" target="_blank">Tải xuống</a><br>
+              <div class="action-btns">
+                <button class="edit-btn">Sửa</button>
+                <button class="delete-btn">Xóa</button>
+              </div>
+            </div>`;
+          div.querySelector(".edit-btn").onclick = () => {
+            editingId = key;
+            document.getElementById("codeTitle").value = item.title;
+            document.getElementById("codeName").value = item.name;
+            document.getElementById("codePack").value = item.pack;
+            document.getElementById("codeUrl").value = item.code;
+            document.getElementById("codeDate").value = item.date;
+            document.getElementById("codeImage").value = item.image.startsWith("data:")
+              ? "" : item.image;
+            document.getElementById("codeType").value = item.type;
+            previewImage.src = item.image;
+            base64Image = item.image.startsWith("data:") ? item.image : "";
+            modal.style.display = "flex";
+          };
+          div.querySelector(".delete-btn").onclick = async () => {
+            if (confirm("Xác nhận xóa?")) {
+              await remove(ref(db, `code/${key}`));
+            }
+          };
+          codeListElem.appendChild(div);
+        }
+      });
+    }
+
+    function loadCodes() {
+      onValue(ref(db, "code"), (snapshot) => {
+        allCodes = snapshot.val() || {};
+        renderCodes();
+      });
+    }
+
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.filter;
+        renderCodes();
+      });
+    });
+    const loggedInUser = localStorage.getItem('loggedInUser');
+if (!loggedInUser) {
+    alert("Bạn chưa đăng nhập!");
+    window.location.href = "index.html"; // hoặc đường dẫn tới trang đăng nhập
+}
+    loadCodes();
+  </script>
+</body>
+</html>

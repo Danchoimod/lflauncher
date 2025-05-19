@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard - Quản lý Bài Viết</title>
+
+  <link rel="stylesheet" href="css/manager.css">
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">LF Admin</div>
+      <nav>
+        <a href="#" >Dashboard</a>
+        <a href="admin.html" class="active">Posts</a>
+        <a href="VersionManagerv2.html">Version</a>
+        <a href="storeManager.html">MarketPlace</a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header class="header">
+        <button id="logoutBtn">Đăng xuất</button>
+      </header>
+
+      <!-- Nút mở popup -->
+      <button class="bluebtn" id="openPostFormBtn">Thêm / Sửa Bài Viết</button>
+
+      <!-- Popup form -->
+      <div id="postFormModal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span class="close" id="closePostFormBtn">&times;</span>
+          <section class="post-form">
+            <h2>Thêm / Sửa Bài Viết</h2>
+            <input type="text" id="title" placeholder="Tiêu đề bài viết" />
+            <textarea id="content" rows="5" placeholder="Nội dung bài viết" style="width: 100%;"></textarea>
+
+            <label for="imageInput"></label>
+            <input type="file" id="imageInput" accept="image/*" />
+
+            <label for="imageURL">Hoặc dán URL ảnh:</label>
+            <input type="text" id="imageURL" placeholder="https://...jpg" />
+
+            <button id="submitBtn" onclick="submitPost()">Thêm bài viết</button>
+          </section>
+        </div>
+      </div>
+
+      <!-- Thêm CSS popup đơn giản -->
+
+        
+        <section class="post-list-section">
+          <h2>Danh Sách Bài Viết</h2>
+          <div id="postListContainer">
+            <div class="grid" id="postList"></div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </div>
+  
+
+  <script type="module" src="js/admin.js"></script>
+  <script type="module" src="js/logout.js"></script>
+</body>
+
+</html>
