@@ -147,6 +147,7 @@
     <button class="tab-btn" data-filter="Maps">Maps</button>
     <button class="tab-btn" data-filter="Textures">Textures</button>
     <button class="tab-btn" data-filter="Skins">Skins</button>
+    <button class="tab-btn" data-filter="Server">Server</button>
     <button class="tab-btn" data-filter="Other">Khác</button>
   `;
   section.insertBefore(tabs, marketList);
