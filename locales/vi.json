@@ -1,0 +1,56 @@
+{
+  "title": "LFLauncher",
+  "home": "Trang chủ",
+  "features_menu": "Tính năng ▾",
+  "main_features": "Tính năng chính",
+  "install_guide": "Hướng dẫn cài đặt",
+  "download": "Tải xuống",
+  "faq": "FAQ",
+  "support": "Hỗ trợ",
+  "login": "Đăng nhập",
+
+  "hero_title": "LFLauncher - Trình khởi chạy Minecraft tốt nhất",
+  "hero_description": "Dễ dàng cài đặt mod, cấu hình và chơi Minecraft miễn phí.",
+  "download_free": "Tải xuống miễn phí",
+
+  "features_title": "Tính năng nổi bật",
+  "feature_easy": "Dễ sử dụng",
+  "feature_easy_desc": "Giao diện thân thiện, dễ dàng với mọi người dùng.",
+  "feature_mod": "Hỗ trợ mod",
+  "feature_mod_desc": "Tích hợp nhiều mod Minecraft phổ biến.",
+  "feature_cross_platform": "Tương thích đa nền tảng",
+  "feature_cross_platform_desc": "Chạy tốt trên Windows, macOS và Linux.",
+  "feature_secure": "Bảo mật cao",
+  "feature_secure_desc": "Bảo vệ tài khoản và dữ liệu người dùng.",
+
+  "install_title": "Hướng dẫn cài đặt",
+  "install_step_1": "Tải LFLauncher về máy.",
+  "install_step_2": "Mở file cài đặt và làm theo hướng dẫn.",
+  "install_step_3": "Đăng nhập hoặc tạo tài khoản Minecraft.",
+  "install_step_4": "Chọn phiên bản Minecraft và bắt đầu chơi.",
+
+  "download_versions": "Tải xuống các phiên bản",
+  "win_version": "Phiên bản Windows",
+  "win_desc": "Hỗ trợ Windows 7 trở lên, 64-bit và 32-bit.",
+  "download_windows": "Tải xuống Windows",
+  "mac_version": "Phiên bản macOS",
+  "mac_desc": "Tương thích với macOS 10.12 trở lên.",
+  "download_mac": "Tải xuống macOS",
+  "linux_version": "Phiên bản Linux",
+  "linux_desc": "Phù hợp với các bản phân phối phổ biến.",
+  "download_linux": "Tải xuống Linux",
+
+  "faq_title": "Câu hỏi thường gặp (FAQ)",
+  "faq_q1": "LFLauncher có miễn phí không?",
+  "faq_a1": "Có, LFLauncher hoàn toàn miễn phí để tải và sử dụng.",
+  "faq_q2": "Làm thế nào để cài mod?",
+  "faq_a2": "Bạn có thể thêm mod vào thư mục 'mods' hoặc sử dụng trình quản lý mod tích hợp.",
+  "faq_q3": "LFLauncher có an toàn không?",
+  "faq_a3": "LFLauncher đảm bảo bảo mật tài khoản người dùng với mã hóa hiện đại và không chia sẻ thông tin với bên thứ ba.",
+
+  "copyright": "© 2025 LFLauncher Pro Clone. Mọi quyền được bảo lưu.",
+
+  "login_title": "Đăng nhập",
+  "username_label": "Tên đăng nhập:",
+  "password_label": "Mật khẩu:"
+}

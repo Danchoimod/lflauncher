@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cập nhật phiên bản - LF Admin</title>
+  <link rel="stylesheet" href="css/manager.css" />
+  <script type="module" src="js/logout.js"></script>
+  <style>
+    /* Style đơn giản cho modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      margin: 8px 0;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .modal-content button {
+      margin-top: 12px;
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .modal-content button:hover {
+      background: #0056b3;
+    }
+    .close {
+      position: absolute;
+      right: 12px;
+      top: 8px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #333;
+    }
+    /* Style cho phần thông tin update hiện tại */
+    #currentUpdateInfo {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      max-width: 600px;
+    }
+    #currentUpdateInfo > div {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+    }
+    #currentUpdateInfo strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    #currentContent {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">LF Admin</div>
+      <nav>
+        <a href="#" class="active">Dashboard</a>
+        <a href="admin.html">Posts</a>
+        <a href="VersionManagerv2.html" >Version</a>
+        <a href="storeManager.html">MarketPlace</a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header class="header">
+        <button id="logoutBtn">Đăng xuất</button>
+      </header>
+
+      <button class="bluebtn" id="openFormBtn">Sửa Thông tin Update</button>
+
+      <div id="updateFormModal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="closeFormBtn">&times;</span>
+          <h3>Sửa Thông tin Update</h3>
+          <input type="text" id="checkVersion" placeholder="Phiên bản (check)" />
+          <textarea id="contentUpdate" placeholder="Nội dung thông báo" rows="4"></textarea>
+          <input type="text" id="linkUpdate" placeholder="Link cập nhật" />
+          <input type="text" id="linkDownUpdate" placeholder="Link tải xuống (linkdown)" />
+          <button id="submitUpdateBtn">Lưu</button>
+        </div>
+      </div>
+
+      <section>
+        <h2>Thông tin Update hiện tại</h2>
+        <div id="currentUpdateInfo">
+          <div>
+            <strong>Phiên bản (check):</strong>
+            <div id="currentCheck">(Đang tải dữ liệu...)</div>
+          </div>
+          <div>
+            <strong>Nội dung thông báo:</strong>
+            <div id="currentContent">(Đang tải dữ liệu...)</div>
+          </div>
+          <div>
+            <strong>Link cập nhật:</strong>
+            <div id="currentLink">(Đang tải dữ liệu...)</div>
+          </div>
+          <div>
+            <strong>Link tải xuống (linkdown):</strong>
+            <div id="currentLinkDown">(Đang tải dữ liệu...)</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDbeiGpq8bCGIHT0f1pg3eLmxmnFKLuUqQ",
+      authDomain: "lflauncher.firebaseapp.com",
+      databaseURL: "https://lflauncher-default-rtdb.firebaseio.com",
+      projectId: "lflauncher",
+      storageBucket: "lflauncher.appspot.com",
+      messagingSenderId: "528661623395",
+      appId: "1:528661623395:web:0b2322ba830548dc2b3e56"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const modal = document.getElementById("updateFormModal");
+    const openBtn = document.getElementById("openFormBtn");
+    const closeBtn = document.getElementById("closeFormBtn");
+    const submitBtn = document.getElementById("submitUpdateBtn");
+
+    const checkVersionInput = document.getElementById("checkVersion");
+    const contentInput = document.getElementById("contentUpdate");
+    const linkInput = document.getElementById("linkUpdate");
+    const linkDownInput = document.getElementById("linkDownUpdate");
+
+    openBtn.onclick = () => {
+      modal.style.display = "flex";
+      const updateRef = ref(db, "update/update");
+      onValue(updateRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          checkVersionInput.value = data.check || "";
+          contentInput.value = data.content || "";
+          linkInput.value = data.link || "";
+          linkDownInput.value = data.linkdown || "";
+        } else {
+          checkVersionInput.value = "";
+          contentInput.value = "";
+          linkInput.value = "";
+          linkDownInput.value = "";
+        }
+      }, { onlyOnce: true });
+    };
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+
+    submitBtn.onclick = async () => {
+      const updateData = {
+        check: checkVersionInput.value.trim(),
+        content: contentInput.value.trim(),
+        link: linkInput.value.trim(),
+        linkdown: linkDownInput.value.trim(),
+      };
+
+      if (!updateData.check || !updateData.content || !updateData.link || !updateData.linkdown) {
+        alert("Vui lòng nhập đủ thông tin: phiên bản, nội dung, link cập nhật và link tải xuống.");
+        return;
+      }
+
+      try {
+        await set(ref(db, "update/update"), updateData);
+        alert("Cập nhật thành công!");
+        modal.style.display = "none";
+      } catch (error) {
+        alert("Lỗi khi cập nhật: " + error.message);
+      }
+    };
+
+    function loadUpdateInfo() {
+      const updateRef = ref(db, "update/update");
+      onValue(updateRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          document.getElementById("currentCheck").textContent = data.check || "(Trống)";
+          document.getElementById("currentContent").textContent = data.content || "(Trống)";
+          document.getElementById("currentLink").textContent = data.link || "(Trống)";
+          document.getElementById("currentLinkDown").textContent = data.linkdown || "(Trống)";
+        } else {
+          document.getElementById("currentCheck").textContent = "Chưa có dữ liệu cập nhật.";
+          document.getElementById("currentContent").textContent = "";
+          document.getElementById("currentLink").textContent = "";
+          document.getElementById("currentLinkDown").textContent = "";
+        }
+      });
+    }
+    loadUpdateInfo();
+
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (!loggedInUser) {
+      alert("Bạn chưa đăng nhập!");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }));
 
                         // ✅ Chuyển trang
-                        window.location.href = 'admin.html';
+                        window.location.href = 'dashboard.html';
                     }
 
                     // Thêm hành động sau đăng nhập thành công ở đây, ví dụ chuyển trang

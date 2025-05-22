@@ -1,0 +1,56 @@
+{
+  "title": "LFLauncher",
+  "home": "Accueil",
+  "features_menu": "Fonctionnalités ▾",
+  "main_features": "Fonctionnalités principales",
+  "install_guide": "Guide d'installation",
+  "download": "Télécharger",
+  "faq": "FAQ",
+  "support": "Support",
+  "login": "Connexion",
+
+  "hero_title": "LFLauncher - Le meilleur lanceur Minecraft",
+  "hero_description": "Installez facilement des mods, configurez et jouez à Minecraft gratuitement.",
+  "download_free": "Téléchargement gratuit",
+
+  "features_title": "Fonctionnalités remarquables",
+  "feature_easy": "Facile à utiliser",
+  "feature_easy_desc": "Interface conviviale pour tous les utilisateurs.",
+  "feature_mod": "Support des mods",
+  "feature_mod_desc": "Intégré à de nombreux mods Minecraft populaires.",
+  "feature_cross_platform": "Multiplateforme",
+  "feature_cross_platform_desc": "Fonctionne bien sur Windows, macOS et Linux.",
+  "feature_secure": "Haute sécurité",
+  "feature_secure_desc": "Protège les comptes et les données des utilisateurs.",
+
+  "install_title": "Guide d'installation",
+  "install_step_1": "Téléchargez LFLauncher sur votre appareil.",
+  "install_step_2": "Ouvrez le programme d'installation et suivez les instructions.",
+  "install_step_3": "Connectez-vous ou créez un compte Minecraft.",
+  "install_step_4": "Choisissez une version de Minecraft et commencez à jouer.",
+
+  "download_versions": "Versions à télécharger",
+  "win_version": "Version Windows",
+  "win_desc": "Compatible avec Windows 7 et versions ultérieures, 64 bits et 32 bits.",
+  "download_windows": "Télécharger pour Windows",
+  "mac_version": "Version macOS",
+  "mac_desc": "Compatible avec macOS 10.12 et versions ultérieures.",
+  "download_mac": "Télécharger pour macOS",
+  "linux_version": "Version Linux",
+  "linux_desc": "Compatible avec les distributions Linux populaires.",
+  "download_linux": "Télécharger pour Linux",
+
+  "faq_title": "Questions fréquemment posées (FAQ)",
+  "faq_q1": "LFLauncher est-il gratuit ?",
+  "faq_a1": "Oui, LFLauncher est entièrement gratuit à télécharger et à utiliser.",
+  "faq_q2": "Comment installer des mods ?",
+  "faq_a2": "Vous pouvez ajouter des mods dans le dossier 'mods' ou utiliser le gestionnaire de mods intégré.",
+  "faq_q3": "LFLauncher est-il sécurisé ?",
+  "faq_a3": "LFLauncher garantit la sécurité des comptes utilisateurs grâce à un chiffrement moderne et ne partage pas les informations avec des tiers.",
+
+  "copyright": "© 2025 LFLauncher Pro Clone. Tous droits réservés.",
+
+  "login_title": "Connexion",
+  "username_label": "Nom d'utilisateur :",
+  "password_label": "Mot de passe :"
+}

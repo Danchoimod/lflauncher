@@ -135,12 +135,48 @@
   </div>
 
   <!-- JS countdown -->
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
+
+    // Cấu hình Firebase của bạn
+    const firebaseConfig = {
+      apiKey: "AIzaSyDbeiGpq8bCGIHT0f1pg3eLmxmnFKLuUqQ",
+      authDomain: "lflauncher.firebaseapp.com",
+      databaseURL: "https://lflauncher-default-rtdb.firebaseio.com",
+      projectId: "lflauncher",
+      storageBucket: "lflauncher.appspot.com",
+      messagingSenderId: "528661623395",
+      appId: "1:528661623395:web:0b2322ba830548dc2b3e56"
+    };
+
+    // Khởi tạo app Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Biến toàn cục để chứa URL chuyển hướng
+    let targetURL = "";
+
+    // Tham chiếu đến dữ liệu cập nhật trong database
+    const updateRef = ref(db, "update/update");
+
+    // Lấy linkdown từ Firebase
+    get(updateRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        targetURL = data.linkdown;
+        console.log("Link tải xuống (linkdown):", targetURL);
+      } else {
+        console.warn("Không tìm thấy dữ liệu cập nhật.");
+      }
+    }).catch((error) => {
+      console.error("Lỗi khi lấy dữ liệu:", error);
+    });
+
+    // Countdown & hiển thị nút skip
     let timeLeft = 5;
     const countdownEl = document.getElementById("countdown");
     const skipBtn = document.querySelector(".skip-btn");
-
-    const targetURL = "https://example.com"; // ← Thay bằng link đích
 
     const timer = setInterval(() => {
       timeLeft--;
@@ -149,11 +185,18 @@
         clearInterval(timer);
         skipBtn.style.display = "inline-block";
         countdownEl.style.display = "none";
+
+        // Tự động chuyển hướng khi countdown kết thúc nếu có targetURL
       }
     }, 1000);
 
-    function goToLink() {
-      window.location.href = targetURL;
+    // Hàm chuyển hướng khi nhấn nút Bỏ qua
+    window.goToLink = function() {
+      if (targetURL) {
+        window.location.href = targetURL;
+      } else {
+        alert("Link chuyển hướng chưa tải xong, vui lòng thử lại sau.");
+      }
     }
   </script>
 
