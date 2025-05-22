@@ -11,6 +11,21 @@
   <script src="js/i18n.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8177702634836557"
      crossorigin="anonymous"></script>
+     <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        // Chờ một chút để đảm bảo layout sẵn sàng
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  });
+</script>
+
 </head>
 
 <body>
@@ -56,8 +71,8 @@
     <div class="parallax-layer layer-mid"></div>
     <div class="parallax-layer layer-front"></div>
     <div class="container hero-content">
-      <h1 class="animate-on-scroll" data-i18n="hero_title">LFLauncher - Trình khởi chạy Minecraft tốt nhất</h1>
-      <p class="animate-on-scroll delay-1" data-i18n="hero_description">Dễ dàng cài đặt mod, cấu hình và chơi Minecraft
+      <h1 class="animate-on-scroll" data-i18n="hero_title">LFLauncher - Trình khởi chạy Minecraft cho thiết bị điện thoại</h1>
+      <p class="animate-on-scroll delay-1" data-i18n="hero_description">Dễ dàng cài đặt addon, texture, skin,map,... và chơi Minecraft
         miễn phí.</p>
       <a href="#download" class="btn-download animate-on-scroll delay-2" data-i18n="download_free">Tải xuống miễn
         phí</a>
@@ -86,7 +101,7 @@
           <rect x="4" y="4" width="16" height="16" stroke="#f39c12" stroke-width="2" />
         </svg>
         <h3 data-i18n="feature_cross_platform">Tương thích đa nền tảng</h3>
-        <p data-i18n="feature_cross_platform_desc">Chạy tốt trên Windows, macOS và Linux.</p>
+        <p data-i18n="feature_cross_platform_desc">Chạy tốt trên Android, Windows .</p>
       </article>
       <article class="feature-item animate-on-scroll delay-3">
         <svg class="icon" viewBox="0 0 24 24" fill="none">
@@ -114,17 +129,17 @@
       <article class="download-item animate-on-scroll">
         <h3 data-i18n="win_version">Phiên bản Windows</h3>
         <p data-i18n="win_desc">Hỗ trợ Windows 7 trở lên, 64-bit và 32-bit.</p>
-        <a href="download.html" class="btn-download" data-i18n="download_windows">Tải xuống Windows</a>
+        <a href="unsuport.html" class="btn-download" data-i18n="download_windows">Tải xuống Windows</a>
       </article>
       <article class="download-item animate-on-scroll delay-1">
-        <h3 data-i18n="mac_version">Phiên bản macOS</h3>
-        <p data-i18n="mac_desc">Tương thích với macOS 10.12 trở lên.</p>
-        <a href="#" class="btn-download" data-i18n="download_mac">Tải xuống macOS</a>
+        <h3 data-i18n="mac_version">Phiên bản Android</h3>
+        <p data-i18n="mac_desc">Tương thích với Android 9 trở lên.</p>
+        <a href="download.html" class="btn-download" data-i18n="download_mac">Tải xuống Android</a>
       </article>
       <article class="download-item animate-on-scroll delay-2">
         <h3 data-i18n="linux_version">Phiên bản Linux</h3>
         <p data-i18n="linux_desc">Phù hợp với các bản phân phối phổ biến.</p>
-        <a href="#" class="btn-download" data-i18n="download_linux">Tải xuống Linux</a>
+        <a href="unsuport.html" class="btn-download" data-i18n="download_linux">Tải xuống Linux</a>
       </article>
     </div>
   </section>

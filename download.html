@@ -1,42 +1,161 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chuyển hướng tải xuống</title>
-  <link rel="stylesheet" href="css/countdown.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forge Download - Advertisement</title>
+
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8177702634836557"
      crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    .topbar {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #countdown {
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffc107;
+    }
+
+    .skip-btn {
+      display: none;
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .message {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .ads-full {
+      margin: 0 auto;
+      padding: 30px 20px;
+      background: white;
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ads-container {
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 13px;
+      color: #555;
+      background: #eaeaea;
+      padding: 8px 10px;
+    }
+
+    .footer-note a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <div class="container" role="main" aria-live="polite" aria-atomic="true">
-    <h1>Chuẩn bị tải xuống...</h1>
-    <p>Bạn sẽ được chuyển hướng sau:</p>
-    <div class="countdown" id="countdown">5</div>
-    <a href="files/tlauncher-installer.exe" download class="btn-download" id="downloadNow">Tải xuống ngay</a>
+
+  <!-- Thanh trên cùng -->
+  <div class="topbar">
+    <div class="top-row">
+      <div class="logo">LF Launcher</div>
+      <div class="controls">
+        <div id="countdown">5</div>
+        <button class="skip-btn" onclick="goToLink()">Skip</button>
+      </div>
+    </div>
+    <div class="message">
+      The content below is an advertisement. After the count-down, click Skip to begin your Forge download..
+    </div>
   </div>
 
+  <!-- Ghi chú quảng bá -->
+  <div class="footer-note">
+    shorten URLs and earn up to $16.50 / 1000 visits - <a href="https://adfoc.us" target="_blank">adfoc.us</a> |
+    <a href="#">Feedback?</a> <a href="#">Report Ad</a>
+  </div>
+
+  <!-- Vùng quảng cáo full phía dưới -->
+  <div class="ads-full">
+    <div class="ads-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8177702634836557"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+
+  <!-- JS countdown -->
   <script>
-    (function(){
-      const countdownEl = document.getElementById('countdown');
-      const downloadLink = document.getElementById('downloadNow').href;
-      let count = 5;
+    let timeLeft = 5;
+    const countdownEl = document.getElementById("countdown");
+    const skipBtn = document.querySelector(".skip-btn");
 
-      const interval = setInterval(() => {
-        count--;
-        if(count <= 0) {
-          clearInterval(interval);
-          window.location.href = downloadLink;
-        } else {
-          countdownEl.textContent = count;
-        }
-      }, 1000);
+    const targetURL = "https://example.com"; // ← Thay bằng link đích
 
-      // Nếu người dùng click "Tải xuống ngay" thì dừng đếm ngược luôn (không bắt buộc, tùy chọn)
-      document.getElementById('downloadNow').addEventListener('click', () => {
-        clearInterval(interval);
-      });
-    })();
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdownEl.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        skipBtn.style.display = "inline-block";
+        countdownEl.style.display = "none";
+      }
+    }, 1000);
+
+    function goToLink() {
+      window.location.href = targetURL;
+    }
   </script>
+
 </body>
 </html>

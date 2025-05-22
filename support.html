@@ -11,6 +11,17 @@
   <script src="js/i18n.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8177702634836557"
      crossorigin="anonymous"></script>
+     <script>
+  window.addEventListener('load', function () {
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+</script>
+
 </head>
 <body>
   <header>
@@ -22,14 +33,14 @@
           <li class="dropdown">
             <a href="#" tabindex="0" data-i18n="features_menu">Tính năng ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#features" data-i18n="main_features">Tính năng chính</a></li>
-              <li><a href="#install-steps" data-i18n="install_guide">Hướng dẫn cài đặt</a></li>
-              <li><a href="#download" data-i18n="download">Tải xuống</a></li>
-              <li><a href="#faq" data-i18n="faq">FAQ</a></li>
+              <li><a href="index.html#features" data-i18n="main_features">Tính năng chính</a></li>
+              <li><a href="index.html#install-steps" data-i18n="install_guide">Hướng dẫn cài đặt</a></li>
+              <li><a href="index.html#download" data-i18n="download">Tải xuống</a></li>
+              <li><a href="index.html#faq" data-i18n="faq">FAQ</a></li>
             </ul>
           </li>
           <li><a href="support.html" data-i18n="support">Hỗ trợ</a></li>
-          <li><a href="#download" data-i18n="download">Tải xuống</a></li>
+          <li><a href="index.html#download" data-i18n="download">Tải xuống</a></li>
             <li>
             <button id="loginBtn" class="btn-login" data-i18n="login" onclick="checkLogin()">Đăng nhập</button>
             </li>
